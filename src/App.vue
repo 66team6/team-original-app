@@ -1,17 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <ChatFunction />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ChatFunction from "@/ChatFunction.vue"
 
 export default {
-  name: "App",
   components: {
-    HelloWorld,
+    ChatFunction,
   },
-};
+}
 </script>
 
 <style>
