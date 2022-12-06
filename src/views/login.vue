@@ -1,65 +1,85 @@
-<template></template>
+<template>
+  <section id="v-if-sign-in">
+    <div v-if="user !== null">
+      <button v-on:click="signOut">サインアウト</button>
+      <div>{{ user.name }}さん、ログイン完了です。</div>
+    </div>
+    <div v-else>
+      <button v-on:click="signIn">サインイン</button>
+      <div>サインインしてください。</div>
+    </div>
+  </section>
+</template>
 
 <script>
 import { GoogleAuthProvider } from "firebase/auth"
-const provider = new GoogleAuthProvider()
-provider.addScope("https://www.googleapis.com/auth/contacts.readonly")
 import { getAuth } from "firebase/auth"
+import { signInWithPopup } from "firebase/auth"
+import { signInWithRedirect } from "firebase/auth"
+import { getRedirectResult } from "firebase/auth"
 
-const auth = getAuth()
-auth.languageCode = "it"
-// To apply the default browser preference instead of explicitly setting it.
-// firebase.auth().useDeviceLanguage();
-provider.setCustomParameters({
-  login_hint: "user@example.com",
-})
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
-
-const auth = getAuth()
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result)
-    const token = credential.accessToken
-    // The signed-in user info.
-    const user = result.user
-    // ...
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code
-    const errorMessage = error.message
-    // The email of the user's account used.
-    const email = error.customData.email
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error)
-    // ...
-  })
-import { getAuth, signInWithRedirect } from "firebase/auth"
-const auth = getAuth()
-signInWithRedirect(auth, provider)
-import { getAuth, getRedirectResult, GoogleAuthProvider } from "firebase/auth"
-
-const auth = getAuth()
-getRedirectResult(auth)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access Google APIs.
-    const credential = GoogleAuthProvider.credentialFromResult(result)
-    const token = credential.accessToken
-
-    // The signed-in user info.
-    const user = result.user
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code
-    const errorMessage = error.message
-    // The email of the user's account used.
-    const email = error.customData.email
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error)
-    // ...
-  })
-export default {}
+export default {
+  data() {
+    return {
+      user: null,
+    }
+  },
+  methods: {
+    signIn() {
+      const provider = new GoogleAuthProvider()
+      provider.addScope("https://www.googleapis.com/auth/contacts.readonly")
+      const auth = getAuth()
+      auth.languageCode = "it"
+      // To apply the default browser preference instead of explicitly setting it.
+      // firebase.auth().useDeviceLanguage();
+      provider.setCustomParameters({
+        login_hint: "user@example.com",
+      })
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result)
+          const token = credential.accessToken
+          // The signed-in user info.
+          const user = result.user
+          // ...
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code
+          const errorMessage = error.message
+          // The email of the user's account used.
+          const email = error.customData.email
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error)
+          // ...
+        })
+      signInWithRedirect(auth, provider)
+      getRedirectResult(auth)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access Google APIs.
+          const credential = GoogleAuthProvider.credentialFromResult(result)
+          const token = credential.accessToken
+          // The signed-in user info.
+          const user = result.user
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code
+          const errorMessage = error.message
+          // The email of the user's account used.
+          const email = error.customData.email
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error)
+          // ...
+        })
+      this.user = {
+        name: "kanna",
+      }
+    },
+    signOut() {
+      this.user = null
+    },
+  },
+}
 </script>
-<style></style>
