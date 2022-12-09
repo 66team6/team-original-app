@@ -2,7 +2,7 @@
   <section id="v-if-sign-in">
     <div v-if="user !== null">
       <button v-on:click="signOut">サインアウト</button>
-      <div>{{ user.name }}さん、ログイン完了です。</div>
+      <div>{{ user.displayName }}さん、ログイン完了です。</div>
     </div>
     <div v-else>
       <button v-on:click="signIn">サインイン</button>
@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       user: null,
+      email: "",
     }
   },
   methods: {
@@ -39,21 +40,28 @@ export default {
         .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           const credential = GoogleAuthProvider.credentialFromResult(result)
-          const token = credential.accessToken
+          credential.accessToken
           // The signed-in user info.
-          const user = result.user
+          this.user = result.user
+          console.log(this.user)
           // ...
         })
         .catch((error) => {
+          console.log(error)
           // Handle Errors here.
-          const errorCode = error.code
-          const errorMessage = error.message
-          // The email of the user's account used.
-          const email = error.customData.email
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error)
-          // ...
+          // const errorCode = error.code
+          // const errorMessage = error.message
+          // // The email of the user's account used.
+          // this.email = error.customData.email
+          // // The AuthCredential type that was used.
+          // const credential = GoogleAuthProvider.credentialFromError(error)
+          // // ...
         })
+    },
+    signOut() {
+      this.user = null
+    },
+    redirect() {
       signInWithRedirect(auth, provider)
       getRedirectResult(auth)
         .then((result) => {
@@ -68,18 +76,13 @@ export default {
           const errorCode = error.code
           const errorMessage = error.message
           // The email of the user's account used.
-          const email = error.customData.email
+          this.email = error.customData.email
           // The AuthCredential type that was used.
           const credential = GoogleAuthProvider.credentialFromError(error)
           // ...
         })
-      this.user = {
-        name: "kanna",
-      }
-    },
-    signOut() {
-      this.user = null
-    },
+
+    }
   },
 }
 </script>
