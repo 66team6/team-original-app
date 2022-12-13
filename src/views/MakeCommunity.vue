@@ -1,34 +1,34 @@
 <template>
   <div class="app">
     <button v-on:click="postcommunity">コミュニティ</button>
-    <MakeCommunityVue></MakeCommunityVue>
+
     <div>
-      <p v-for="community in communities" :key="community.id">
-        {{ community.text }}
-      </p>
+      <input v-model="message" placeholder="コミュニティ名" />
+      <input v-model="detail" placeholder="コミュニティの概要" />
     </div>
   </div>
 </template>
 
 <script>
 import { collection, addDoc, getDocs } from "firebase/firestore"
-import { db } from "./firebase"
-import MakeCommunityVue from "./views/MakeCommunity.vue"
-export default {
-  components: {
-    MakeCommunityVue,
-  },
+import { db } from "../firebase"
 
+export default {
   data() {
     return {
       communities: [],
+      message: "",
+      detail: "",
     }
   },
   methods: {
     postcommunity() {
-      addDoc(collection(db, "communities"), {
-        text: "コミュニティを作成した",
-      })
+      const community = {
+        detail: this.detail,
+        name: this.message,
+        member: [],
+      }
+      addDoc(collection(db, "communities"), community)
     },
   },
   created() {
