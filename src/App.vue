@@ -1,45 +1,5 @@
 <template>
-  <div class="app">
-    <button v-on:click="postcommunity">コミュニティ</button>
-    <MakeCommunityVue></MakeCommunityVue>
-    <div>
-      <p v-for="community in communities" :key="community.id">
-        {{ community.text }}
-      </p>
-    </div>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
-
-<script>
-import { collection, addDoc, getDocs } from "firebase/firestore"
-import { db } from "./firebase"
-import MakeCommunityVue from "./views/MakeCommunity.vue"
-export default {
-  components: {
-    MakeCommunityVue,
-  },
-
-  data() {
-    return {
-      communities: [],
-    }
-  },
-  methods: {
-    postcommunity() {
-      addDoc(collection(db, "communities"), {
-        text: "コミュニティを作成した",
-      })
-    },
-  },
-  created() {
-    getDocs(collection(db, "communities")).then((snapshot) => {
-      snapshot.forEach((doc) => {
-        this.community.push({
-          id: doc.id,
-          ...doc.data(),
-        })
-      })
-    })
-  },
-}
-</script>
