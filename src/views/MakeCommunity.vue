@@ -22,13 +22,17 @@ export default {
     }
   },
   methods: {
-    postcommunity() {
+    async postcommunity() {
       const community = {
         detail: this.detail,
         name: this.message,
         member: [],
       }
-      addDoc(collection(db, "communities"), community)
+      await addDoc(collection(db, "communities"), community)
+      this.reload()
+    },
+    reload() {
+      this.$router.go({ path: this.$router.currentRoute.path, force: true })
     },
   },
   created() {
