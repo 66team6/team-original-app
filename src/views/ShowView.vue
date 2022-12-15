@@ -7,6 +7,7 @@
       <div class="community_name">{{ community.name }}</div>
       <div class="community_detail">{{ community.detail }}</div>
       <div class="community_detail">{{ community.member.length }}人参加中</div>
+      <IntoCommunityVue community_id=""></IntoCommunityVue>
     </div>
   </div>
 </template>
@@ -16,9 +17,11 @@ import { collection, getDocs } from "firebase/firestore"
 
 import { db } from "../firebase"
 import MakeCommunityVue from "./MakeCommunity.vue"
+import IntoCommunityVue from "./IntoCommunity.vue"
 export default {
   components: {
     MakeCommunityVue,
+    IntoCommunityVue
   },
   data() {
     return {
