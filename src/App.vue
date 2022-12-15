@@ -3,17 +3,6 @@
     <router-view></router-view>
   </div>
 </template>
-
-<script>
-import intoCommunity from "./IntoCommunity.vue"
-
-export default {
-  components: {
-    intoCommunity,
-  },
-}
-</script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
