@@ -9,9 +9,8 @@
       <div>サインインしてください。</div>
     </div>
   </section>
-  <div id="profile">
-    
-  </div>
+  <button @click="goHomePage">ホームへ戻る</button>
+  <div id="profile"></div>
 </template>
 
 <script>
@@ -30,9 +29,9 @@ export default {
   },
   methods: {
     signIn() {
-      const provider = new GoogleAuthProvider()
+      const provider = this.provider
       provider.addScope("https://www.googleapis.com/auth/contacts.readonly")
-      const auth = getAuth()
+      const auth = this.auth
       auth.languageCode = "it"
       // To apply the default browser preference instead of explicitly setting it.
       // firebase.auth().useDeviceLanguage();
@@ -51,30 +50,21 @@ export default {
         })
         .catch((error) => {
           console.log(error)
-          // Handle Errors here.
-          // const errorCode = error.code
-          // const errorMessage = error.message
-          // // The email of the user's account used.
-          // this.email = error.customData.email
-          // // The AuthCredential type that was used.
-          // const credential = GoogleAuthProvider.credentialFromError(error)
-          // // ...
         })
     },
     signOut() {
       this.user = null
     },
     redirect() {
+      const auth = this.auth
+      const provider = this.provider
       signInWithRedirect(auth, provider)
       getRedirectResult(auth)
         .then((result) => {
-          // This gives you a Google Access Token. You can use it to access Google APIs.
-          // const credential = GoogleAuthProvider.credentialFromResult(result)
-          // const token = credential.accessToken
-          // // The signed-in user info.
-          // const user = result.user
+          this.user = result.user
         })
         .catch((error) => {
+          console.log(error)
           // Handle Errors here.
           // const errorCode = error.code
           // const errorMessage = error.message
@@ -84,6 +74,20 @@ export default {
           // const credential = GoogleAuthProvider.credentialFromError(error)
           // // ...
         })
+    },
+    goHomePage() {
+      this.$router.push({
+        name: "home",
+        query: { user: this.user.displayName },
+      })
+    },
+  },
+  computed: {
+    auth() {
+      return getAuth()
+    },
+    provider() {
+      return new GoogleAuthProvider()
     },
   },
 }
