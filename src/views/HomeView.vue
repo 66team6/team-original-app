@@ -3,7 +3,7 @@
   <!-- <h1>{{ user }}</h1> -->
   <h1>{{ message }}</h1>
   <div class="home">
-    <ShowViewVue :user="user"></ShowViewVue>
+    <MakeCommunityVue :userName="user"></MakeCommunityVue>
   </div>
 </template>
 
@@ -11,8 +11,12 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue"
 // import loginViewVue from "./loginView.vue"
-import ShowViewVue from "./ShowView.vue"
+// import ShowViewVue from "./ShowView.vue"
+import MakeCommunityVue from "./MakeCommunity.vue"
 export default {
+  components: {
+    MakeCommunityVue,
+  },
   name: "HomeView",
   data() {
     return {
@@ -26,9 +30,6 @@ export default {
     goToLogin() {
       this.$router.push({ name: "login" })
     },
-  },
-  components: {
-    ShowViewVue,
   },
   // props: ["user"],
   async created() {

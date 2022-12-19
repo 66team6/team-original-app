@@ -50,13 +50,13 @@ export default {
   component: {
     IntoCommunityVue,
   },
-  // props: ["userName"],
+  props: ["userName"],
   data() {
     return {
       communities: [],
       message: "",
       detail: "",
-      userName: "kohei",
+      // userName: "kohei",
     }
   },
   methods: {
