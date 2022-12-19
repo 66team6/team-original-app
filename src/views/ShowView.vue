@@ -23,6 +23,7 @@ export default {
     MakeCommunityVue,
     IntoCommunityVue
   },
+  props: ["user"],
   data() {
     return {
       communities: [],
