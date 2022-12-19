@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
-import HomeView from "../views/HomeView.vue"
+import HomeView from "../views/ShowView.vue"
 
 const routes = [
   {
@@ -20,6 +20,12 @@ const routes = [
     path: "/login",
     name: "login",
     component: () => import("../views/loginView.vue"),
+    props: true,
+  },
+  {
+    path: "/chat",
+    name: "chat",
+    component: () => import("../ChatFunction.vue"),
     props: true,
   },
 ]

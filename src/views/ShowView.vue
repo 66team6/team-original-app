@@ -2,14 +2,22 @@
   <div>
     <MakeCommunityVue :user="user"></MakeCommunityVue>
   </div>
-  <div v-for="community in communities" v-bind:key="community">
-    <div class="community_box">
-      <div class="community_name">{{ community.name }}</div>
-      <div class="community_detail">{{ community.detail }}</div>
-      <div class="community_detail">{{ community.member.length }}人参加中</div>
-      <!-- <IntoCommunityVue :communityId="community.id" :userName="user"></IntoCommunityVue> -->
-    </div>
+  <div v-for="community in communities" :key="community">
+    <div>{{ community.name }}</div>
   </div>
+  <!-- <button @click="getLists">aa</button> -->
+  <!-- <div>{{ communities }}</div> -->
+  <!-- <div v-for="index in communities.length" v-bind:key="index"> -->
+  <!-- <div>{{ communities[index].detail }}</div> -->
+  <!-- <div class="community_box"> -->
+  <!-- <div>{{ communities[index].name }}</div> -->
+  <!-- <div class="community_detail">{{ communities[index].detail }}</div> -->
+  <!-- <div class="community_detail"> -->
+  <!-- {{ communities[index].member.length }}人参加中 -->
+  <!-- </div> -->
+  <!-- <IntoCommunityVue :communityId="community.id" :userName="user"></IntoCommunityVue> -->
+  <!-- </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -31,14 +39,28 @@ export default {
   },
   methods: {
     async getLists() {
+      const x = []
       const ref = await getDocs(collection(db, "communities"))
       for (let i = 0; i < ref.docs.length; i++) {
-        this.communities.push(ref.docs[i].data())
+        x.push(ref.docs[i].data())
       }
+      this.communities = x
+    },
+    reload() {
+      this.$router.go({ path: this.$router.currentRoute.path, force: true })
     },
   },
   created() {
-    this.getLists()
+    getDocs(collection(db, "communities")).then((snapshot) => {
+      snapshot.forEach((doc) => {
+        this.tweets.push({
+          id: doc.id,
+          ...doc.data(),
+        })
+      })
+    })
+    // this.getLists()
+    // this.communities.splice()
   },
 }
 </script>
