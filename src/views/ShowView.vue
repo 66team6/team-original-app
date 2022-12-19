@@ -20,6 +20,7 @@ export default {
   components: {
     MakeCommunityVue,
   },
+  props: ["user"],
   data() {
     return {
       communities: [],
