@@ -4,13 +4,13 @@
     <button v-on:click="chatTweet">投稿</button>
 
     <div>
-      <p v-for="chat in chats" :key="chat.id">{{ chat.text }}</p>
+      <p v-for="chat in chats" :key="chat.id">{{ chat }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import { collection, addDoc, getDocs } from "firebase/firestore"
+import { doc, collection, setDoc, getDocs } from "firebase/firestore"
 
 import { db } from "./firebase"
 
@@ -18,25 +18,38 @@ export default {
   data() {
     return {
       chats: [],
+      chats_id: "",
     }
   },
   methods: {
     chatTweet() {
-      const chat = { text: this.chatValue }
-      addDoc(collection(db, "chats"), chat).then((ref) => {
-        this.chats.push({
-          id: ref.id,
-          ...chat,
-        })
-      })
+      this.chats.push(this.chatValue)
+      const texts = this.chats
+      setDoc(doc(db, "chats", this.chats_id), { texts })
+      this.chatValue = ""
     },
   },
   created() {
-    getDocs(collection(db, "chats")).then((ref) => {
-      for (let i = 0; i < ref.docs.length; i++) {
-        this.chats.push(ref.docs[i].data())
-      }
-    })
+    const chat_id = this.$route.query.id
+    const x = []
+    this.chats_id = chat_id
+    getDocs(collection(db, "chats"))
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          x.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+      })
+      .then(() => {
+        for (let i = 0; i < x.length; i++) {
+          if (chat_id === x[i].id) {
+            this.chats = [...x[i].texts]
+            break
+          }
+        }
+      })
   },
 }
 </script>
