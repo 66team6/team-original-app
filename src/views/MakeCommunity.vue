@@ -14,6 +14,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore"
 import { db } from "../firebase"
 
 export default {
+  props: ["user"],
   data() {
     return {
       communities: [],
@@ -26,7 +27,7 @@ export default {
       const community = {
         detail: this.detail,
         name: this.message,
-        member: [],
+        member: [this.user],
       }
       await addDoc(collection(db, "communities"), community)
       this.reload()

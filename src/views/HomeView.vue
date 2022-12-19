@@ -4,7 +4,7 @@
   <h1>{{ message }}</h1>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <ShowViewVue></ShowViewVue>
+    <ShowViewVue :user="user"></ShowViewVue>
   </div>
 </template>
 
