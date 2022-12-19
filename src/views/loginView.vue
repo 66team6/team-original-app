@@ -28,7 +28,7 @@ export default {
     }
   },
   methods: {
-    signIn() {
+    async signIn() {
       const provider = this.provider
       provider.addScope("https://www.googleapis.com/auth/contacts.readonly")
       const auth = this.auth
@@ -38,7 +38,7 @@ export default {
       provider.setCustomParameters({
         login_hint: "user@example.com",
       })
-      signInWithPopup(auth, provider)
+      await signInWithPopup(auth, provider)
         .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           const credential = GoogleAuthProvider.credentialFromResult(result)
@@ -51,9 +51,11 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+      // this.goHomePage()
     },
     signOut() {
       this.user = null
+      // this.goHomePage()
     },
     redirect() {
       const auth = this.auth
@@ -80,6 +82,7 @@ export default {
         name: "home",
         query: { user: this.user.displayName },
       })
+      // this.$emit("changeName", this.user.displayName)
     },
   },
   computed: {
