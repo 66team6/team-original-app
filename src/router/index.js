@@ -22,6 +22,12 @@ const routes = [
     component: () => import("../views/loginView.vue"),
     props: true,
   },
+  {
+    path: "/chat",
+    name: "chat",
+    component: () => import("../ChatFunction.vue"),
+    props: true,
+  },
 ]
 
 const router = createRouter({
