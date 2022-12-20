@@ -1,11 +1,14 @@
 <template>
   <div class="app">
-    <input v-model="chatValue" />
-    <button v-on:click="chatTweet">投稿</button>
-
     <div>
-      <p v-for="chat in chats" :key="chat.id">{{ chat.text }}</p>
+      <p v-for="chat in chats" :key="chat.id" class="chatbox">
+        {{ chat.text }}
+      </p>
     </div>
+    <footer>
+      <input v-model="chatValue" class="inputbox" />
+      <button v-on:click="chatTweet" class="chatbutton"></button>
+    </footer>
   </div>
 </template>
 
@@ -40,3 +43,30 @@ export default {
   },
 }
 </script>
+
+<style>
+.app {
+  background-color: #ffff88;
+}
+
+.inputbox {
+  margin: 2em 0 2em 40px;
+  padding: 15px;
+  border-radius: 30px;
+}
+
+.chatbutton {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  bottom: -10px;
+  right: -10px;
+}
+.chatbox {
+  border: solid;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+</style>

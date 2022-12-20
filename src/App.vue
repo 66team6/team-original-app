@@ -5,15 +5,21 @@
   </nav>
   <router-view />
 
-  <intoCommunity />
+  <header>
+    <intoCommunity />
+  </header>
+
+  <ChatFunction />
 </template>
 
 <script>
 import intoCommunity from "./IntoCommunity.vue"
+import ChatFunction from "./ChatFunction.vue"
 
 export default {
   components: {
     intoCommunity,
+    ChatFunction,
   },
 }
 </script>
