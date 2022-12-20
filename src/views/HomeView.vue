@@ -1,6 +1,5 @@
 <template>
   <button @click="goToLogin">ログインへ</button>
-  <!-- <h1>{{ user }}</h1> -->
   <h1>{{ message }}</h1>
   <div class="home">
     <MakeCommunityVue :userName="user"></MakeCommunityVue>
@@ -8,10 +7,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue"
-// import loginViewVue from "./loginView.vue"
-// import ShowViewVue from "./ShowView.vue"
 import MakeCommunityVue from "./MakeCommunity.vue"
 export default {
   components: {

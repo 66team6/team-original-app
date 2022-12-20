@@ -67,14 +67,6 @@ export default {
         })
         .catch((error) => {
           console.log(error)
-          // Handle Errors here.
-          // const errorCode = error.code
-          // const errorMessage = error.message
-          // // The email of the user's account used.
-          // this.email = error.customData.email
-          // // The AuthCredential type that was used.
-          // const credential = GoogleAuthProvider.credentialFromError(error)
-          // // ...
         })
     },
     goHomePage() {
@@ -82,7 +74,6 @@ export default {
         name: "home",
         query: { user: this.user.displayName },
       })
-      // this.$emit("changeName", this.user.displayName)
     },
   },
   computed: {
