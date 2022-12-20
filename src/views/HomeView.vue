@@ -1,10 +1,33 @@
 <template>
-  <button @click="goToLogin">ログインへ</button>
-  <h1>{{ message }}</h1>
-  <div class="home">
-    <MakeCommunityVue :userName="user"></MakeCommunityVue>
+  <div class="header">
+    <div class="appname">アプリ名</div>
+  </div>
+  <div class="main">
+    <div class="photo"></div>
+    <div class="login">
+      <button @click="goToLogin">ログインへ</button>
+      <h1>{{ message }}</h1>
+      <div class="home">
+        <MakeCommunityVue :userName="user"></MakeCommunityVue>
+      </div>
+    </div>
+    <div class="footer">
+      This Application is made by:Reiga, Kanna, Rina and Yuina.
+    </div>
   </div>
 </template>
+<style>
+.header {
+  color: aqua;
+  position: absolute;
+  width: 1440px;
+  height: 120px;
+  left: 0px;
+  top: 0px;
+
+  background: #ffffff;
+}
+</style>
 
 <script>
 import MakeCommunityVue from "./MakeCommunity.vue"
