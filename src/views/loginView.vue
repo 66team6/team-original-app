@@ -1,17 +1,67 @@
 <template>
-  <section id="v-if-sign-in">
-    <div v-if="user !== null">
-      <button v-on:click="signOut">サインアウト</button>
-      <div>{{ user.displayName }}さん、ログイン完了です。</div>
+  <header>
+    <div class="appname">Beacon</div>
+  </header>
+  <main>
+    <div class="photo"></div>
+    <div class="login">
+      <section id="v-if-sign-in" class="signin">
+        <div v-if="user !== null">
+          <button v-on:click="signOut">サインアウト</button>
+          <div>{{ user.displayName }}さん、ログイン完了です。</div>
+        </div>
+        <div v-else>
+          <button v-on:click="signIn">サインイン</button>
+          <div>サインインしてください。</div>
+        </div>
+      </section>
+      <button @click="goHomePage">ホームへ戻る</button>
+      <div id="profile"></div>
     </div>
-    <div v-else>
-      <button v-on:click="signIn">サインイン</button>
-      <div>サインインしてください。</div>
-    </div>
-  </section>
-  <button @click="goHomePage">ホームへ戻る</button>
-  <div id="profile"></div>
+  </main>
+  <footer>This Application is made by: Reiga, Kanna, Rina, Yuina</footer>
 </template>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  width: 100%;
+  height: 100px;
+  left: 0px;
+  top: 0px;
+  /* background-color: aqua; */
+}
+main {
+  width: 100%;
+  height: 410px;
+  background: rgba(217, 217, 217, 0.4);
+  display: flex;
+  /* justify-content: center; */
+}
+.photo {
+  margin: 20px;
+  width: 55%;
+  height: 95%;
+  background-image: url(C:\Users\maseg\Desktop\webex\team-original-app\1.jpg);
+  background-size: cover;
+  border-radius: 15px;
+  /* display: inline-block; */
+}
+.login {
+  /* display: inline-block; */
+  margin: 50px;
+}
+
+footer {
+  width: 100%;
+  height: 43px;
+  background-color: blueviolet;
+}
+</style>
 
 <script>
 import { GoogleAuthProvider } from "firebase/auth"
