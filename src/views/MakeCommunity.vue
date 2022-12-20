@@ -7,7 +7,6 @@
       <input v-model="detail" placeholder="コミュニティの概要" />
     </div>
   </div>
-  <!-- <div>{{ communities }}</div> -->
   <div v-for="community in communities" :key="community">
     <div class="community_box">
       <div class="community_name">{{ community.name }}</div>
@@ -22,16 +21,6 @@
       <button v-else @click="gochat(community.id)">チャットへ参加</button>
     </div>
   </div>
-  <!-- <div v-for="index in communities.length" v-bind:key="index"> -->
-  <!-- <div>{{ communities[index].name }}</div> -->
-  <!-- <div class="community_box"> -->
-  <!-- <div>{{ communities[index].name }}</div> -->
-  <!-- <div class="community_detail">{{ communities[index].detail }}</div> -->
-  <!-- <div class="community_detail"> -->
-  <!-- {{ communities[index].member.length }}人参加中 -->
-  <!-- </div> -->
-  <!-- <IntoCommunityVue :communityId="community.id" :userName="user"></IntoCommunityVue> -->
-  <!-- </div> -->
 </template>
 
 <script>
@@ -56,7 +45,6 @@ export default {
       communities: [],
       message: "",
       detail: "",
-      // userName: "kohei",
     }
   },
   methods: {
