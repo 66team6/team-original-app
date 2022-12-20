@@ -33,12 +33,8 @@ import {
   getDocs,
 } from "firebase/firestore"
 import { db } from "../firebase"
-import IntoCommunityVue from "./IntoCommunity.vue"
 
 export default {
-  component: {
-    IntoCommunityVue,
-  },
   props: ["userName"],
   data() {
     return {
