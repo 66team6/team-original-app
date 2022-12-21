@@ -11,7 +11,7 @@
       <section id="v-if-sign-in" class="loginbutton">
         <div v-if="user !== null">
           <button class="btn btn--yellow btn--cubic" v-on:click="signOut">
-            Sign Out
+            サインアウト
           </button>
           <div class="direction">
             {{ user.displayName }}さん、ログイン完了です。
@@ -21,7 +21,7 @@
           <button class="btn btn--yellow btn--cubic" v-on:click="signIn">
             サインイン
           </button>
-          <div class="direction">サインインしてください。</div>
+          <div class="direction">サインインしてください</div>
         </div>
       </section>
       <button class="btn btn--yellow2 btn--cubic" @click="goHomePage">
@@ -46,7 +46,7 @@ header {
   height: 100px;
   display: flex;
   justify-content: flex-start;
-  padding-top: 10px;
+  padding-top: 0px;
   padding-left: 30px;
   /* left: 0px;
   top: 0px; */
@@ -58,9 +58,10 @@ header {
   width: 80px;
   height: 80px;
   margin-right: 20px;
+  margin-top: 10px;
 }
 .appname {
-  font-size: 70px;
+  font-size: 90px;
   font-family: "Caveat", cursive;
   /* padding-top: px; */
 }
