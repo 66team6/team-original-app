@@ -41,6 +41,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 header {
   width: 100%;
   height: 100px;
@@ -52,19 +53,22 @@ header {
   top: 0px; */
   /* background-color: aqua; */
 }
+
 .appphoto {
-  background-image: url(C:\Users\maseg\Desktop\webex\team-original-app\Component_17.png);
+  background-image: url(~@/assets/Component_17.png);
   background-size: contain;
   width: 80px;
   height: 80px;
   margin-right: 20px;
   margin-top: 10px;
 }
+
 .appname {
   font-size: 90px;
   font-family: "Caveat", cursive;
   /* padding-top: px; */
 }
+
 main {
   width: 100%;
   height: 410px;
@@ -72,16 +76,18 @@ main {
   display: flex;
   /* justify-content: center; */
 }
+
 .photo {
   margin: 30px;
   width: 40%;
   height: 95%;
-  background-image: url(C:\Users\maseg\Desktop\webex\team-original-app\Rectangle_54.png);
+  background-image: url(~@/assets/Rectangle_54.png);
   background-size: contain;
   border-radius: 15px;
 
   /* display: inline-block; */
 }
+
 .login {
   /* display: inline-block; */
   padding-top: 30px;
@@ -91,24 +97,28 @@ main {
   border-right: 30px solid #ffffff;
   border-left: 30px solid #ffffff;
 }
+
 .loginicon {
-  background-image: url(C:\Users\maseg\Desktop\webex\team-original-app\ic_baseline-person-pin.png);
+  background-image: url(~@/assets/ic_baseline-person-pin.png);
   width: 38%;
   height: 19%;
   background-size: cover;
   margin-left: 70px;
 }
+
 .loginfont {
   font-size: 30px;
   font-weight: bold;
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
+
 .loginbutton {
   padding-top: 40px;
   font-weight: bold;
 
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
+
 .btn--yellow {
   color: #000;
   width: 100px;
@@ -119,11 +129,13 @@ main {
   border-radius: 10px;
   font-weight: bold;
 }
+
 .direction {
   margin-top: 15px;
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
   font-size: large;
 }
+
 .btn--yellow2 {
   margin-top: 15px;
   font-weight: bold;
@@ -143,12 +155,14 @@ main {
   background: #ffff88;
   border-bottom: 2px solid #ccc100;
 }
+
 .btn--yellow2:hover {
   margin-top: 3px;
   color: #000;
   background: #ffff88;
   border-bottom: 2px solid #ccc100;
 }
+
 footer {
   width: 100%;
   height: 43px;
