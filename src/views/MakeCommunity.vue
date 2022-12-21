@@ -1,22 +1,6 @@
 <template>
-  <div class="header">
-    <div class="image">
-      <img
-        src="https://cdn.discordapp.com/attachments/1039136325720342558/1054936411398230077/Component_17.png"
-        width="60"
-        height="60"
-      />
-    </div>
-    <div class="header-logo">Beacon</div>
-  </div>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Caveat&display=swap%27"
-    rel="stylesheet"
-  />
   <div class="app">
-    <button class="button" v-on:click="postcommunity">作成</button>
-
+    <div class="memo">ーー自分の好きなコミュニティを作りましょう！ーー</div>
     <div>
       <input class="textbox" v-model="message" placeholder="コミュニティ名" />
       <input
@@ -24,6 +8,7 @@
         v-model="detail"
         placeholder="コミュニティの概要"
       />
+      <button class="button" v-on:click="postcommunity">作成する</button>
     </div>
   </div>
   <div v-for="community in communities" :key="community">
@@ -32,16 +17,22 @@
       <div class="community_detail">{{ community.detail }}</div>
       <div class="community_detail">{{ community.member.length }}人参加中</div>
       <button
+        class="intobtn"
         v-if="!community.member.includes(userName)"
         v-on:click="intoCommunity(community.id)"
       >
         コミュニティに入る
       </button>
-      <button v-else @click="gochat(community.id)">チャットへ参加</button>
+
+      <button class="chatbtn" v-else @click="gochat(community.id)">
+        チャットへ参加する
+      </button>
     </div>
   </div>
   <div class="footer">
-    <div class="footer-logo">made by ...</div>
+    <div class="footer-logo">
+      This Application is made by : Reiga, Kanna, Rina, Yuina
+    </div>
   </div>
 </template>
 
@@ -70,7 +61,7 @@ export default {
       const community = {
         detail: this.detail,
         name: this.message,
-        member: [this.user],
+        member: [this.userName],
       }
       await addDoc(collection(db, "communities"), community)
       this.reload()
@@ -110,37 +101,89 @@ export default {
 }
 </script>
 <style scoped>
+.app {
+  margin: 0;
+  padding: 0;
+}
 .button {
-  width: 80px;
-  height: 50px;
-  border-radius: 10px;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  width: 120px;
+  height: 56px;
+  border-radius: 30px;
+  background-color: #0587ff;
+  border-bottom: 5px solid #012da7;
+  border-right: #0587ff;
+  border-top: #0587ff;
+  border-left: #0587ff;
+  font-weight: bold;
+  font-size: 17px;
+  color: #ffffff;
+  margin-left: 10px;
 }
 .textbox {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-size: 15px;
   width: 300px;
   height: 50px;
-  margin: 10px;
+  margin: 10px 10px 2px 10px;
   border-radius: 10px;
 }
 
 .textbox2 {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-size: 15px;
   width: 500px;
   height: 50px;
   border-radius: 10px;
+}
+
+.intobtn {
+  width: 200px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #0587ff;
+  border-bottom: 5px solid #012da7;
+  border-right: #0587ff;
+  border-top: #0587ff;
+  border-left: #0587ff;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.chatbtn {
+  width: 200px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #0587ff;
+  border-bottom: 5px solid #012da7;
+  border-right: #0587ff;
+  border-top: #0587ff;
+  border-left: #0587ff;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+  margin-left: 10px;
 }
 
 .community_box {
   border: solid;
   border-radius: 25px;
   background-color: #66ccff;
-  width: 85%;
-  height: 170px;
-  margin: 20px auto;
-  padding-top: 20px;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  width: 80%;
+
+  margin: 32px auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .community_name {
   border-radius: 15px;
   font-size: 20px;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-weight: bold;
   background-color: #ff8;
   margin: auto;
   padding: 5px;
@@ -148,13 +191,23 @@ export default {
 }
 
 .community_detail {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
   font-size: 15px;
-  margin: 10px;
+  font-weight: bold;
+  margin: 8px 70px;
+  line-height: 1.7;
 }
 
 .footer {
-  width: auto;
-  height: 100px;
-  background-color: #d9d9d9;
+  width: 1440px;
+  height: 80px;
+  background-color: #f1f5f7;
+  margin: 0;
+}
+
+.footer-logo {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  font-size: 15px;
+  padding-top: 16px;
 }
 </style>
