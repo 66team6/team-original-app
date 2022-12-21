@@ -1,10 +1,29 @@
 <template>
+  <div class="header">
+    <div class="image">
+      <img
+        src="https://cdn.discordapp.com/attachments/1039136325720342558/1054936411398230077/Component_17.png"
+        width="60"
+        height="60"
+      />
+    </div>
+    <div class="header-logo">Beacon</div>
+  </div>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat&display=swap%27"
+    rel="stylesheet"
+  />
   <div class="app">
-    <button v-on:click="postcommunity">コミュニティ</button>
+    <button class="button" v-on:click="postcommunity">作成</button>
 
     <div>
-      <input v-model="message" placeholder="コミュニティ名" />
-      <input v-model="detail" placeholder="コミュニティの概要" />
+      <input class="textbox" v-model="message" placeholder="コミュニティ名" />
+      <input
+        class="textbox2"
+        v-model="detail"
+        placeholder="コミュニティの概要"
+      />
     </div>
   </div>
   <div v-for="community in communities" :key="community">
@@ -20,6 +39,9 @@
       </button>
       <button v-else @click="gochat(community.id)">チャットへ参加</button>
     </div>
+  </div>
+  <div class="footer">
+    <div class="footer-logo">made by ...</div>
   </div>
 </template>
 
@@ -88,15 +110,51 @@ export default {
 }
 </script>
 <style scoped>
+.button {
+  width: 80px;
+  height: 50px;
+  border-radius: 10px;
+}
+.textbox {
+  width: 300px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.textbox2 {
+  width: 500px;
+  height: 50px;
+  border-radius: 10px;
+}
+
 .community_box {
   border: solid;
+  border-radius: 25px;
+  background-color: #66ccff;
+  width: 85%;
+  height: 170px;
+  margin: 20px auto;
+  padding-top: 20px;
 }
 
 .community_name {
-  font-size: large;
+  border-radius: 15px;
+  font-size: 20px;
+  background-color: #ff8;
+  margin: auto;
+  padding: 5px;
+  width: 30%;
 }
 
 .community_detail {
-  font-size: small;
+  font-size: 15px;
+  margin: 10px;
+}
+
+.footer {
+  width: auto;
+  height: 100px;
+  background-color: #d9d9d9;
 }
 </style>
