@@ -1,5 +1,7 @@
 <template>
-  <button v-on:click="intoCommunity">コミュニティに入る</button>
+  <header>
+    <button v-on:click="intoCommunity" class="commubutton"></button>
+  </header>
 </template>
 
 <script>
@@ -26,3 +28,15 @@ export default {
   },
 }
 </script>
+
+<style>
+header {
+  background-color: #bbbbbb;
+}
+
+.commubutton {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+</style>
