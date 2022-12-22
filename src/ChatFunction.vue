@@ -1,19 +1,18 @@
 <template>
-  <div class="app">
-    <div class="chatdisplay">
-      <p v-for="name in names" :key="name.id" class="namebox">
-        {{ name.text }}
-      </p>
-      <p v-for="chat in chats" :key="chat.id" class="chatbox">
-        {{ chat.text }}
-      </p>
+  <body>
+    <div class="app">
+      <div>
+        <p v-for="chat in chats" :key="chat.id" class="chatbox">
+          {{ chat.text }}by{{ chat.name }}
+        </p>
+      </div>
     </div>
-    <footer>
-      <input v-model="nameValue" class="namebox" />
-      <input v-model="chatValue" class="inputbox" />
-      <button v-on:click="chatTweet" class="chatbutton">⛯</button>
-    </footer>
-  </div>
+  </body>
+  <footer>
+    <input v-model="nameValue" class="inputbox" placeholder="あなたの名前" />
+    <input v-model="chatValue" class="inputbox" placeholder="つぶやこう" />
+    <button v-on:click="chatTweet" class="chatbutton">投稿</button>
+  </footer>
 </template>
 
 <script>
@@ -25,23 +24,15 @@ export default {
   data() {
     return {
       chats: [],
-      names: [],
     }
   },
   methods: {
     chatTweet() {
-      const chat = { text: this.chatValue }
+      const chat = { text: this.chatValue, name: this.nameValue }
       addDoc(collection(db, "chats"), chat).then((ref) => {
         this.chats.push({
           id: ref.id,
           ...chat,
-        })
-      })
-      const name = { text: this.nameValue }
-      addDoc(collection(db, "names"), name).then((ref) => {
-        this.names.push({
-          id: ref.id,
-          ...name,
         })
       })
     },
@@ -52,34 +43,50 @@ export default {
         this.chats.push(ref.docs[i].data())
       }
     })
-    getDocs(collection(db, "names")).then((ref) => {
-      for (let i = 0; i < ref.docs.length; i++) {
-        this.names.push(ref.docs[i].data())
-      }
-    })
   },
 }
 </script>
 
 <style>
 footer {
-  background-color: #bbbbbb;
+  background-color: #f1f5f7;
+  position: absolute;
+  bottom: 0;
+  left: 43%;
 }
 
 .inputbox {
-  margin: 2em 0 2em 40px;
   padding: 15px;
-  border-radius: 30px;
-  border: solid 3px #00aaff;
+  color: #000;
+  width: 200px;
+  height: 20px;
+  font-size: 14px;
+  background-color: #ccffff;
+  border-bottom: 5px solid #00aaff;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 
 .chatbutton {
   position: relative;
   bottom: -10px;
   right: -10px;
-  background-color: #fff56c;
-  font-size: 30px;
-  border-radius: 100% 80px / 80px 100%;
+  color: #000;
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  background-color: #ffff88;
+  border-bottom: 5px solid #ccc100;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}
+.chatbutton:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #ffff88;
+  border-bottom: 2px solid #ccc100;
 }
 .chatbox {
   border: solid;
@@ -87,8 +94,6 @@ footer {
   margin-top: 20px;
   margin-left: 20px;
   border: solid 3px #00aaff;
-}
-.chatdisplay {
-  display: flex;
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 </style>

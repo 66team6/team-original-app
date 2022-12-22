@@ -8,7 +8,6 @@
   <header>
     <intoCommunity />
   </header>
-
   <ChatFunction />
 </template>
 
