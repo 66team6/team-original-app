@@ -110,9 +110,9 @@ header {
 h1 {
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
   border-bottom: 5px solid #f1f5f7;
-  padding-bottom: 23px;
+  padding-bottom: 16px;
   margin-left: 20px;
-  margin-right: 20;
+  margin-right: 20px;
   margin-bottom: 10px;
 }
 </style>

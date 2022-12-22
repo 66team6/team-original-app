@@ -105,6 +105,10 @@ export default {
   margin: 0;
   padding: 0;
 }
+
+.memo {
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}
 .button {
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
   width: 120px;
