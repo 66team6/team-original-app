@@ -52,7 +52,8 @@ footer {
   background-color: #f1f5f7;
   position: absolute;
   bottom: 0;
-  left: 43%;
+  left: 31%;
+  margin: 10px 30px 10px 30px;
 }
 
 .inputbox {
