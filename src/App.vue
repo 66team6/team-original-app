@@ -1,27 +1,6 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
   <router-view />
-
-  <header>
-    <intoCommunity />
-  </header>
-  <ChatFunction />
 </template>
-
-<script>
-import intoCommunity from "./IntoCommunity.vue"
-import ChatFunction from "./ChatFunction.vue"
-
-export default {
-  components: {
-    intoCommunity,
-    ChatFunction,
-  },
-}
-</script>
 
 <style>
 #app {
