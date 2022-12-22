@@ -212,6 +212,6 @@ export default {
 .footer-logo {
   font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
   font-size: 15px;
-  padding-top: 16px;
+  padding-top: 28px;
 }
 </style>
