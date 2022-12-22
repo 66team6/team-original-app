@@ -1,6 +1,3 @@
 {
-  "trailingComma": "es5",
-  "semi": false,
-  "arrowParens": "always",
-  "endOfLine": "lf"
+  "semi": false
 }
