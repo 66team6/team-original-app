@@ -64,7 +64,7 @@ header {
 }
 
 .appname {
-  font-size: 90px;
+  font-size: 80px;
   font-family: "Caveat", cursive;
   /* padding-top: px; */
 }
@@ -92,7 +92,7 @@ main {
   /* display: inline-block; */
   padding-top: 30px;
   padding-left: 200px;
-  padding-right: 221px;
+  padding-right: 260px;
   /* border-top: 30px solid #ffffff; */
   border-right: 30px solid #ffffff;
   border-left: 30px solid #ffffff;
@@ -103,7 +103,7 @@ main {
   width: 38%;
   height: 19%;
   background-size: cover;
-  margin-left: 70px;
+  margin-left: 61px;
 }
 
 .loginfont {
@@ -139,7 +139,6 @@ main {
 .btn--yellow2 {
   margin-top: 15px;
   font-weight: bold;
-
   width: 100px;
   height: 40px;
   color: #000;
@@ -165,9 +164,9 @@ main {
 
 footer {
   width: 100%;
-  height: 43px;
+  height: 58px;
   background-color: #ffff88;
-  padding-top: 14px;
+  padding-top: 22px;
   /* font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体"; */
 }
 </style>
